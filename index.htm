@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Verification</title>
+    
+    <!-- Подключение стилей Google Fonts для красивого шрифта -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* Основные стили страницы */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .h-captcha {
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+    <!-- Подключение скрипта hCaptcha -->
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Confirm you're not a robot</h1>
+
+        <!-- Форма с hCaptcha -->
+        <form id="captcha-form">
+            <!-- hCaptcha -->
+            <div class="h-captcha" data-sitekey="004050c6-fede-458a-bcd6-e7d81a522e76"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Примечание о безопасности -->
+        <div class="footer">
+            By submitting, you confirm that you're not a robot and agree to our <a href="#">terms of service</a>.
+        </div>
+    </div>
+
+    <script>
+        // Обработка отправки формы
+        document.getElementById('captcha-form').onsubmit = function(event) {
+            event.preventDefault();  // Отменяем стандартную отправку формы
+
+            var response = hcaptcha.getResponse();  // Получаем ответ от hCaptcha
+
+            if (response.length == 0) {
+                alert("Please complete the CAPTCHA.");
+            } else {
+                // Если капча пройдена, перенаправляем пользователя
+                window.location.href = "https://tinyurl.com/chathere111";  // Замените на ваш URL
+            }
+        };
+    </script>
+    
+</body>
+</html>
